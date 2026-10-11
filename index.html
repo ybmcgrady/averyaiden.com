@@ -1,50 +1,458 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f5ed">
-  <meta name="description" content="Avery and Aiden’s little corner of the universe. A place for big imaginations, small discoveries, and everyday adventures.">
-  <title>Avery & Aiden · Our little universe</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header class="site-header">
-    <a class="logo" href="#" aria-label="Avery and Aiden home">a<span>+</span>a<span class="logo-dot">✳</span></a>
-    <a class="header-link" href="#explore">Let’s explore <span aria-hidden="true">↗</span></a>
-  </header>
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="little-star" aria-hidden="true">✦</span> TWO KIDS. ENDLESS POSSIBILITIES.</p>
-        <h1 id="hero-title">Avery <span class="ampersand">&</span><br>Aiden<span class="period">.</span></h1>
-        <p class="intro">Welcome to our little universe.<br>Big ideas, happy accidents, and a whole<br class="desktop-break"> lot of growing along the way.</p>
-        <a class="button" href="#explore">Find a little adventure <span aria-hidden="true">↗</span></a>
-        <p class="handwritten">a little curious. a lot of us.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f5ed" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      name="description"
+      content="Avery and Aiden’s little corner of the universe. A place for big imaginations, small discoveries, and everyday adventures."
+    />
+    <title>Avery & Aiden · Our little universe</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="journal.css" />
+    <script src="script.js" defer></script>
+    <script src="journal.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#home" aria-label="Avery and Aiden home"
+        >a<span>+</span>a<span class="logo-dot">✳</span></a
+      >
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#journal">Journal</a
+        ><a href="#photos">Photos</a>
+        <a href="#signin" class="account-link" id="account-link"
+          >Family sign in ↗</a
+        >
+      </nav>
+    </header>
+    <div class="device-banner" id="device-banner" hidden>
+      Device demo — saved in this browser only, never shared with family.
+      <button type="button" id="leave-demo">Leave demo</button>
+    </div>
+    <p
+      id="app-notice"
+      class="app-notice"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></p>
+    <main>
+      <div id="home-view" data-app-view>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="little-star" aria-hidden="true">✦</span> TWO KIDS.
+              ENDLESS POSSIBILITIES.
+            </p>
+            <h1 id="hero-title">
+              Avery <span class="ampersand">&</span><br />Aiden<span
+                class="period"
+                >.</span
+              >
+            </h1>
+            <p class="intro">
+              Welcome to our little universe.<br />Big ideas, happy accidents,
+              and a whole<br class="desktop-break" />
+              lot of growing along the way.
+            </p>
+            <a class="button" href="#journal"
+              >Our family journal <span aria-hidden="true">↗</span></a
+            >
+            <p class="handwritten">a little curious. a lot of us.</p>
+          </div>
+          <div
+            class="universe"
+            role="img"
+            aria-label="A cheerful illustrated universe with a smiling sun, a purple planet, stars, and a green hill"
+          >
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <span class="space-star star-one">✦</span
+            ><span class="space-star star-two">✧</span
+            ><span class="space-star star-three">✦</span>
+            <div class="sun">
+              <div class="sun-face"><i></i><i></i><b></b></div>
+            </div>
+            <div class="planet">
+              <div class="planet-ring"></div>
+              <span></span>
+            </div>
+            <div class="hill hill-back"></div>
+            <div class="hill hill-front"></div>
+            <div class="flower"><span>✿</span><i></i></div>
+            <span class="tiny-spark">✳</span
+            ><span class="universe-caption">IMAGINATION LIVES HERE</span>
+            <div class="hello-sticker">oh, hi! <span>☺</span></div>
+          </div>
+        </section>
+        <div class="ticker" aria-hidden="true">
+          <span>MAKE SOMETHING</span> ✳ <span>STAY CURIOUS</span> ✳
+          <span>GO EXPLORE</span> ✳ <span>BE KIND</span> ✳
+          <span>DREAM BIG</span> ✳
+        </div>
+        <section class="explore" id="explore" aria-labelledby="explore-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">A LITTLE INSPIRATION</p>
+              <h2 id="explore-title">What shall we do today?</h2>
+            </div>
+            <span class="heading-doodle" aria-hidden="true">⤵</span>
+          </div>
+          <div class="cards">
+            <article class="card create">
+              <span class="card-number">01 / MAKE</span>
+              <div class="card-art" aria-hidden="true">✂</div>
+              <h3>Make a little magic.</h3>
+              <p>
+                A blank page. A few colors. An idea that’s entirely your own.
+              </p>
+              <span class="card-tag">Messy hands welcome</span>
+            </article>
+            <article class="card discover">
+              <span class="card-number">02 / DISCOVER</span>
+              <div class="card-art" aria-hidden="true">✳</div>
+              <h3>Follow your curiosity.</h3>
+              <p>
+                Look closer. Ask why. There’s something new around every corner.
+              </p>
+              <span class="card-tag">Wonder is a superpower</span>
+            </article>
+            <article class="card adventure">
+              <span class="card-number">03 / PLAY</span>
+              <div class="card-art" aria-hidden="true">⚑</div>
+              <h3>Find your next adventure.</h3>
+              <p>
+                Build a blanket fort. Invent a game. Turn an ordinary day into a
+                story.
+              </p>
+              <span class="card-tag">Let’s see where we go</span>
+            </article>
+          </div>
+        </section>
+        <section class="idea-box" aria-labelledby="idea-title">
+          <div class="idea-icon" aria-hidden="true">✦</div>
+          <div class="idea-content">
+            <p class="eyebrow" id="idea-title">THE WHAT-IF MACHINE</p>
+            <p id="idea" aria-live="polite" aria-atomic="true">
+              What if you invented an animal no one has ever seen?
+            </p>
+          </div>
+          <button type="button" id="shuffle">
+            Another idea <span aria-hidden="true">↻</span>
+          </button>
+        </section>
+        <section class="family-invite">
+          <div>
+            <h2>Little moments. Kept close.</h2>
+            <p>Our stories and photos, in a little space just for family.</p>
+          </div>
+          <a class="button" href="#journal">Open our journal ↗</a>
+        </section>
       </div>
-      <div class="universe" role="img" aria-label="A cheerful illustrated universe with a smiling sun, a purple planet, stars, and a green hill">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <span class="space-star star-one">✦</span><span class="space-star star-two">✧</span><span class="space-star star-three">✦</span>
-        <div class="sun"><div class="sun-face"><i></i><i></i><b></b></div></div>
-        <div class="planet"><div class="planet-ring"></div><span></span></div>
-        <div class="hill hill-back"></div><div class="hill hill-front"></div>
-        <div class="flower"><span>✿</span><i></i></div>
-        <span class="tiny-spark">✳</span><span class="universe-caption">IMAGINATION LIVES HERE</span>
-        <div class="hello-sticker">oh, hi! <span>☺</span></div>
-      </div>
-    </section>
-    <div class="ticker" aria-hidden="true"><span>MAKE SOMETHING</span> ✳ <span>STAY CURIOUS</span> ✳ <span>GO EXPLORE</span> ✳ <span>BE KIND</span> ✳ <span>DREAM BIG</span> ✳</div>
-    <section class="explore" id="explore" aria-labelledby="explore-title">
-      <div class="section-heading"><div><p class="eyebrow">A LITTLE INSPIRATION</p><h2 id="explore-title">What shall we do today?</h2></div><span class="heading-doodle" aria-hidden="true">⤵</span></div>
-      <div class="cards">
-        <article class="card create"><span class="card-number">01 / MAKE</span><div class="card-art" aria-hidden="true">✂</div><h3>Make a little magic.</h3><p>A blank page. A few colors. An idea that’s entirely your own.</p><span class="card-tag">Messy hands welcome</span></article>
-        <article class="card discover"><span class="card-number">02 / DISCOVER</span><div class="card-art" aria-hidden="true">✳</div><h3>Follow your curiosity.</h3><p>Look closer. Ask why. There’s something new around every corner.</p><span class="card-tag">Wonder is a superpower</span></article>
-        <article class="card adventure"><span class="card-number">03 / PLAY</span><div class="card-art" aria-hidden="true">⚑</div><h3>Find your next adventure.</h3><p>Build a blanket fort. Invent a game. Turn an ordinary day into a story.</p><span class="card-tag">Let’s see where we go</span></article>
-      </div>
-    </section>
-    <section class="idea-box" aria-labelledby="idea-title"><div class="idea-icon" aria-hidden="true">✦</div><div class="idea-content"><p class="eyebrow" id="idea-title">THE WHAT-IF MACHINE</p><p id="idea" aria-live="polite" aria-atomic="true">What if you invented an animal no one has ever seen?</p></div><button type="button" id="shuffle">Another idea <span aria-hidden="true">↻</span></button></section>
-  </main>
-  <footer><a class="footer-name" href="#">Avery & Aiden<span>✳</span></a><p>Our little corner of a very big world.</p><span class="footer-note">Made for growing imaginations ♡</span></footer>
-</body>
+
+      <section
+        id="signin-view"
+        class="journal-section"
+        data-app-view
+        hidden
+        aria-labelledby="signin-title"
+      >
+        <div class="signin-card">
+          <span class="signin-star" aria-hidden="true">✳</span>
+          <p class="eyebrow">JUST FOR OUR PEOPLE</p>
+          <h1 id="signin-title">Come on in<span>.</span></h1>
+          <p>Our journal is a little space for the family.</p>
+          <p id="setup-note">
+            Family sign-in is not ready yet. You can try the journal on this
+            device.
+          </p>
+          <form id="signin-form" class="journal-form" hidden>
+            <label
+              >Email<input
+                id="signin-email"
+                type="email"
+                autocomplete="username"
+                required
+                maxlength="254"
+            /></label>
+            <label
+              >Password<input
+                id="signin-password"
+                type="password"
+                autocomplete="current-password"
+                required
+            /></label>
+            <button class="button" type="submit">Sign in ↗</button>
+            <button class="text-button" type="button" id="reset-password">
+              Forgot your password?
+            </button>
+          </form>
+          <p id="signin-error" class="form-error" role="alert" hidden></p>
+          <div class="demo-invite">
+            <button class="button button-outline" id="start-demo" type="button">
+              Try on this device ↗
+            </button>
+            <p>
+              No account needed. Demo stories stay in this browser and may be
+              lost if its data is cleared.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="journal-view"
+        class="journal-section"
+        data-app-view
+        hidden
+        aria-labelledby="journal-title"
+      >
+        <div class="journal-heading">
+          <div>
+            <p class="eyebrow">
+              <span aria-hidden="true">✦</span> THE LITTLE THINGS, WRITTEN DOWN.
+            </p>
+            <h1 id="journal-title">Our family journal<span>.</span></h1>
+            <p class="section-intro" id="journal-description">
+              Big adventures. Small discoveries. A little bit of us.
+            </p>
+          </div>
+          <a class="button" href="#write">Write a little story ＋</a>
+        </div>
+        <nav class="journal-tabs" aria-label="Journal sections">
+          <a href="#journal">Stories</a><a href="#photos">Photos</a
+          ><a href="#drafts">My drafts</a><a href="#trash">Trash</a>
+        </nav>
+        <div class="journal-tools">
+          <label
+            >Find a memory<input
+              type="search"
+              id="search-entries"
+              placeholder="Search stories and captions…" /></label
+          ><label
+            >Written by<select id="author-filter">
+              <option value="all">Everyone</option>
+            </select></label
+          ><button
+            type="button"
+            class="button button-outline"
+            id="refresh-entries"
+          >
+            Refresh ↻
+          </button>
+        </div>
+        <p class="results-note" id="results-note" role="status"></p>
+        <div id="entry-list" class="journal-grid"></div>
+        <button
+          class="button button-outline load-more"
+          id="load-more"
+          type="button"
+          hidden
+        >
+          More memories ↓
+        </button>
+        <div id="journal-empty" class="journal-empty" hidden>
+          <span aria-hidden="true">✳</span>
+          <h2 id="empty-title">Every story starts somewhere.</h2>
+          <p id="empty-description">
+            A sentence, a photo, a small adventure. Keep your first memory.
+          </p>
+          <a href="#write" class="button" id="empty-action"
+            >Write a little story ↗</a
+          >
+        </div>
+      </section>
+
+      <section
+        id="editor-view"
+        class="journal-section"
+        data-app-view
+        hidden
+        aria-labelledby="editor-title"
+      >
+        <div class="journal-heading">
+          <div>
+            <p class="eyebrow">
+              <span aria-hidden="true">✦</span> SOMETHING WORTH REMEMBERING
+            </p>
+            <h1 id="editor-title">A little story to keep<span>.</span></h1>
+          </div>
+          <a class="text-button" href="#journal">← Back to journal</a>
+        </div>
+        <div class="editor-layout">
+          <form id="editor-form" class="journal-form">
+            <label
+              >Give it a title <span class="optional">(optional)</span
+              ><input
+                id="entry-title"
+                maxlength="120"
+                placeholder="The day we…"
+            /></label>
+            <label
+              >Your story<textarea
+                id="entry-body"
+                maxlength="20000"
+                rows="8"
+                placeholder="Something funny, something new, or just a really good Tuesday."
+              ></textarea>
+            </label>
+            <div>
+              <label
+                >Add photos<input
+                  id="entry-files"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  multiple
+              /></label>
+              <p class="field-help">
+                Up to 20 photos. JPEG, PNG, or WebP, under 20 MB each. We save
+                smaller copies for the web; keep your originals.
+              </p>
+              <p id="photo-progress" role="status" hidden></p>
+              <div class="editor-photos" id="editor-photos"></div>
+            </div>
+            <div class="form-row">
+              <label
+                >When did it happen?<input
+                  id="entry-date"
+                  type="date"
+                  required /></label
+              ><label
+                >Photo caption <span class="optional">(optional)</span
+                ><input
+                  id="entry-caption"
+                  maxlength="1000"
+                  placeholder="A few words about these photos"
+              /></label>
+            </div>
+            <div class="form-row">
+              <span class="privacy-tag">Family only</span
+              ><span id="editor-author" class="field-help"></span>
+            </div>
+            <p id="editor-error" class="form-error" role="alert" hidden></p>
+            <div class="editor-actions">
+              <button class="button" type="submit" id="publish-entry">
+                Publish story ↗</button
+              ><button
+                class="button button-outline"
+                type="button"
+                id="save-draft"
+              >
+                Save draft</button
+              ><span
+                class="save-status"
+                id="save-status"
+                role="status"
+                aria-live="polite"
+                >Not saved yet</span
+              >
+            </div>
+          </form>
+          <aside class="writing-prompt">
+            <span aria-hidden="true">✳</span>
+            <h2>Small is wonderful.</h2>
+            <p>
+              A sentence is enough. A photo is enough. You don’t need a big
+              occasion to keep a little memory.
+            </p>
+            <hr />
+            <p class="eyebrow">A LITTLE PROMPT</p>
+            <p id="writing-prompt">What made you laugh today?</p>
+            <button
+              id="next-prompt"
+              type="button"
+              class="button button-outline"
+            >
+              Another idea ↻
+            </button>
+          </aside>
+        </div>
+      </section>
+
+      <section
+        id="entry-view"
+        class="journal-section"
+        data-app-view
+        hidden
+        aria-labelledby="story-title"
+      >
+        <article class="story-detail">
+          <a href="#journal" class="text-button">← All our stories</a>
+          <p class="eyebrow" id="story-meta"></p>
+          <h1 id="story-title"></h1>
+          <p id="story-body" class="story-body"></p>
+          <div id="story-photos" class="story-photos"></div>
+          <p id="story-caption" class="section-intro"></p>
+          <div class="story-actions">
+            <span class="privacy-tag">Family only</span
+            ><a id="edit-story" href="#write" class="button button-outline"
+              >Edit story</a
+            ><button id="trash-story" type="button" class="text-button">
+              Move to trash</button
+            ><button
+              id="restore-story"
+              type="button"
+              class="button button-outline"
+              hidden
+            >
+              Restore story
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <section
+        id="account-view"
+        class="journal-section"
+        data-app-view
+        hidden
+        aria-labelledby="account-title"
+      >
+        <div class="signin-card">
+          <p class="eyebrow">YOUR LITTLE CORNER</p>
+          <h1 id="account-title">
+            Hello, <span id="member-name">friend</span>.
+          </h1>
+          <p id="account-description"></p>
+          <form id="password-form" class="journal-form" hidden>
+            <label
+              >New password<input
+                type="password"
+                id="new-password"
+                autocomplete="new-password"
+                minlength="12"
+                required /></label
+            ><label
+              >Confirm password<input
+                type="password"
+                id="confirm-password"
+                autocomplete="new-password"
+                minlength="12"
+                required
+            /></label>
+            <p class="field-help">Use at least 12 characters.</p>
+            <button type="submit" class="button">Set password</button>
+          </form>
+          <p class="form-error" role="alert" id="account-error" hidden></p>
+          <a href="#drafts" class="button button-outline">My drafts ↗</a
+          ><button id="signout" type="button" class="text-button">
+            Sign out
+          </button>
+        </div>
+      </section>
+      <noscript
+        ><p class="app-notice">
+          Please enable JavaScript to sign in and use the family journal.
+        </p></noscript
+      >
+    </main>
+    <footer>
+      <a class="footer-name" href="#">Avery & Aiden<span>✳</span></a>
+      <p>Our little corner of a very big world.</p>
+      <span class="footer-note">Made for growing imaginations ♡</span>
+    </footer>
+  </body>
 </html>
