@@ -2,6 +2,6 @@
 // service_role key, database password, or connection string in this file.
 // Complete the setup in README.md before enabling family sign-in.
 export const config = Object.freeze({
-  supabaseUrl: "",
-  supabasePublishableKey: "",
+  supabaseUrl: "https://ncfcctawrmuhstufctwe.supabase.co",
+  supabasePublishableKey: "sb_publishable_NImuv5FHCce2HETdcPnLqA_8FL2PLH0",
 });

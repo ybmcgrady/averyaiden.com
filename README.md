@@ -18,7 +18,9 @@ There are two clearly labeled storage modes:
 | Device demo (available now) | IndexedDB in the current browser | No account; never shared with family |
 | Connected family journal | Supabase Auth, PostgreSQL, and a private Storage bucket | Invited, active family members only |
 
-The checked-in configuration is empty. Cloud login and family sharing are **not active** until the setup below is completed. Device stories do not automatically migrate to Supabase. Demo data can disappear when browser data is cleared; do not use the demo as the only copy of important memories.
+The website is connected to the `avery-aiden` Supabase project in US East. Its database and private photo bucket are installed; live database authorization checks pass. Dashboard Auth settings, email delivery, and the first family account must be completed before family sign-in is ready for use. The steps below also document setup for a replacement project; do not rerun the initial schema on the connected project.
+
+Device stories do not automatically migrate to Supabase. Demo data can disappear when browser data is cleared; do not use the demo as the only copy of important memories.
 
 ## Preview locally
 
@@ -130,7 +132,7 @@ npm run check
 npm test
 ```
 
-The tests cover validation, dates/search, persistent demo photos, stale-edit conflicts, and database authorization using PGlite with minimal Auth/Storage stubs. They do not use a real Supabase project or real family data.
+The automated tests cover validation, dates/search, persistent demo photos, stale-edit conflicts, and database authorization using PGlite with minimal Auth/Storage stubs. They do not use a real Supabase project or real family data. Setup verification also ran transaction-rolled-back checks on the connected project for draft privacy, family sharing, author ownership, nonmember rejection, and trash/restore. The privileged write implementations live in the unexposed `private` schema, with invoker wrappers in the public API; anonymous execution is explicitly revoked.
 
 | File | Purpose |
 | --- | --- |

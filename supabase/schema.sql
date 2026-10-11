@@ -64,7 +64,7 @@ language sql immutable set search_path = '' as $$
   select case when object_name ~ '^[0-9a-f-]{36}/[0-9a-f-]{36}/[0-9a-f-]{36}(\.thumb)?\.jpg$'
     then split_part(object_name, '/', 2)::uuid else null end;
 $$;
-revoke all on all functions in schema private from public;
+revoke all on all functions in schema private from public, anon, authenticated;
 grant execute on all functions in schema private to authenticated;
 
 alter table public.family_members enable row level security;
@@ -158,8 +158,33 @@ begin
   return result;
 end;
 $$;
-revoke all on function public.save_entry(uuid, integer, text, text, text, date, text, jsonb) from public;
-revoke all on function public.set_entry_deleted(uuid, integer, boolean) from public;
+revoke all on function public.save_entry(uuid, integer, text, text, text, date, text, jsonb) from public, anon, authenticated;
+revoke all on function public.set_entry_deleted(uuid, integer, boolean) from public, anon, authenticated;
+grant execute on function public.save_entry(uuid, integer, text, text, text, date, text, jsonb) to authenticated;
+grant execute on function public.set_entry_deleted(uuid, integer, boolean) to authenticated;
+
+-- Keep privileged write implementations outside the exposed API schema.
+alter function public.save_entry(uuid, integer, text, text, text, date, text, jsonb) set schema private;
+alter function public.set_entry_deleted(uuid, integer, boolean) set schema private;
+
+create function public.save_entry(
+  entry_id uuid, expected_version integer, entry_title text, entry_body text,
+  entry_caption text, entry_date date, entry_status text, entry_photos jsonb
+) returns public.posts
+language sql security invoker set search_path = '' as $$
+  select private.save_entry(entry_id, expected_version, entry_title, entry_body,
+    entry_caption, entry_date, entry_status, entry_photos);
+$$;
+create function public.set_entry_deleted(entry_id uuid, expected_version integer, is_deleted boolean)
+returns public.posts language sql security invoker set search_path = '' as $$
+  select private.set_entry_deleted(entry_id, expected_version, is_deleted);
+$$;
+revoke all on function private.save_entry(uuid, integer, text, text, text, date, text, jsonb) from public, anon, authenticated;
+revoke all on function private.set_entry_deleted(uuid, integer, boolean) from public, anon, authenticated;
+grant execute on function private.save_entry(uuid, integer, text, text, text, date, text, jsonb) to authenticated;
+grant execute on function private.set_entry_deleted(uuid, integer, boolean) to authenticated;
+revoke all on function public.save_entry(uuid, integer, text, text, text, date, text, jsonb) from public, anon, authenticated;
+revoke all on function public.set_entry_deleted(uuid, integer, boolean) from public, anon, authenticated;
 grant execute on function public.save_entry(uuid, integer, text, text, text, date, text, jsonb) to authenticated;
 grant execute on function public.set_entry_deleted(uuid, integer, boolean) to authenticated;
 
