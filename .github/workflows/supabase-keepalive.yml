@@ -1,0 +1,29 @@
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    - cron: "15 3,11,19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Query Supabase heartbeat
+        env:
+          API_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          set -eu
+          if [ -z "$API_KEY" ]; then
+            echo "Missing SUPABASE_PUBLISHABLE_KEY secret"
+            exit 1
+          fi
+          response=$(curl --fail-with-body --silent --show-error --retry 2 \
+            "https://ncfcctawrmuhstufctwe.supabase.co/rest/v1/keep_alive?select=id&limit=1" \
+            -H "apikey: $API_KEY")
+          echo "$response"
+          test "$response" = '[{"id":1}]'
